@@ -9,13 +9,13 @@ We develop a new edge detection algorithm, holistically-nested edge detection (H
 
 If you are using the code/model/data provided here in a publication, please cite our paper:
 
-@InProceedings{xie15hed,
-  author    = "Xie, Saining and Tu, Zhuowen",
-  title     = "Holistically-Nested Edge Detection",
-  booktitle = "Proceedings of IEEE International Conference on Computer Vision",
-  year      = "2015"
-}
-
+    @InProceedings{xie15hed,
+      author = {"Xie, Saining and Tu, Zhuowen"},
+      Title = {Holistically-Nested Edge Detection},
+      Year  = {2015},
+    }
+    
+  
 ### Changelog
 
 If you have downloaded the previous version (testing code) of HED, please note that we updated the code base to the new version of Caffe. We uploaded a new pretrained model with better performance. We adopted the python interface written for the FCN paper instead of our own implementation for training and testing. The evaluation protocol doesn't change.
