@@ -12,6 +12,7 @@ If you are using the code/model/data provided here in a publication, please cite
     @InProceedings{xie15hed,
       author = {"Xie, Saining and Tu, Zhuowen"},
       Title = {Holistically-Nested Edge Detection},
+      Booktitle = "Proceedings of IEEE International Conference on Computer Vision",
       Year  = {2015},
     }
     
