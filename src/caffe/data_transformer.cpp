@@ -318,8 +318,8 @@ void DataTransformer<Dtype>::Transform(const cv::Mat& cv_img,
 
 //#ifndef OSX
 template<typename Dtype>
-std::pair<int,int> DataTransformer<Dtype>::LocTransform(const cv::Mat& cv_img,
-                                       Blob<Dtype>* transformed_blob) {
+void DataTransformer<Dtype>::LocTransform(const cv::Mat& cv_img,
+                                       Blob<Dtype>* transformed_blob, int &h_off, int &w_off, bool &do_mirror) {
   const int img_channels = cv_img.channels();
   const int img_height = cv_img.rows;
   const int img_width = cv_img.cols;
@@ -338,7 +338,7 @@ std::pair<int,int> DataTransformer<Dtype>::LocTransform(const cv::Mat& cv_img,
 
   const int crop_size = param_.crop_size();
   const Dtype scale = param_.scale();
-  const bool do_mirror = param_.mirror() && Rand(2);
+  do_mirror = param_.mirror() && Rand(2);
   const bool has_mean_file = param_.has_mean_file();
   const bool has_mean_values = mean_values_.size() > 0;
 
@@ -364,8 +364,6 @@ std::pair<int,int> DataTransformer<Dtype>::LocTransform(const cv::Mat& cv_img,
     }
   }
 
-int h_off = 0;
-  int w_off = 0;
   cv::Mat cv_cropped_img = cv_img;
   if (crop_size) {
     CHECK_EQ(crop_size, height);
@@ -413,13 +411,12 @@ int h_off = 0;
     }
   }
 
-  return std::make_pair(h_off, w_off);
 }
 //#endif
 
 template<typename Dtype>
 void DataTransformer<Dtype>::LabelmapTransform(const cv::Mat& cv_img,
-                                       Blob<Dtype>* transformed_blob, const std::pair<int,int> hw_off) {
+                                       Blob<Dtype>* transformed_blob, const int h_off, const int w_off, const bool do_mirror) {
   const int img_channels = cv_img.channels();
   const int img_height = cv_img.rows;
   const int img_width = cv_img.cols;
@@ -442,15 +439,10 @@ void DataTransformer<Dtype>::LabelmapTransform(const cv::Mat& cv_img,
   CHECK_GT(img_channels, 0);
   CHECK_GE(img_height, crop_size);
   CHECK_GE(img_width, crop_size);
-  int h_off = 0;
-  int w_off = 0;
   cv::Mat cv_cropped_img = cv_img;
   if (crop_size) {
     CHECK_EQ(crop_size, height);
     
-    h_off = hw_off.first;
-    w_off = hw_off.second;
-
     cv::Rect roi(w_off, h_off, crop_size, crop_size);
     cv_cropped_img = cv_img(roi);
   } else {
@@ -459,7 +451,6 @@ void DataTransformer<Dtype>::LabelmapTransform(const cv::Mat& cv_img,
   }
 
   CHECK(cv_cropped_img.data);
-
   Dtype* transformed_data = transformed_blob->mutable_cpu_data();
   int top_index;
   for (int h = 0; h < height; ++h) {
@@ -467,7 +458,11 @@ void DataTransformer<Dtype>::LabelmapTransform(const cv::Mat& cv_img,
     int img_index = 0;
     for (int w = 0; w < width; ++w) {
       for (int c = 0; c < img_channels; ++c) {
-        top_index = (c * height + h) * width + w;
+        if (do_mirror) {
+          top_index = (c * height + h) * width + (width - 1 - w);
+        } else {
+          top_index = (c * height + h) * width + w;
+        }
         Dtype pixel = static_cast<Dtype>(ptr[img_index++]);
         transformed_data[top_index] = pixel;
       }

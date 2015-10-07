@@ -203,7 +203,10 @@ void ImageLabelmapDataLayer<Dtype>::load_batch(LabelmapBatch<Dtype>* batch) {
     //CHECK(offset == offset_gt) << "fetching should be synchronized";
     this->transformed_data_.set_cpu_data(prefetch_data + offset);
     this->transformed_labelmap_.set_cpu_data(prefetch_labelmap + offset_gt);
-    std::pair<int, int> hw_off = this->data_transformer_->LocTransform(cv_img, &(this->transformed_data_));
+    int h_off = 0;
+    int w_off = 0;
+    bool do_mirror = false;
+    this->data_transformer_->LocTransform(cv_img, &(this->transformed_data_), h_off, w_off, do_mirror);
     
     cv::Mat encoded_gt;
     //regression
@@ -213,7 +216,7 @@ void ImageLabelmapDataLayer<Dtype>::load_batch(LabelmapBatch<Dtype>* batch) {
     //For general binary edge maps this is okay
     //For 5-subject aggregated edge maps (BSDS), this will abandon weak edge points labeled by only two or less labelers.
 
-    this->data_transformer_->LabelmapTransform(encoded_gt, &(this->transformed_labelmap_), hw_off);
+    this->data_transformer_->LabelmapTransform(encoded_gt, &(this->transformed_labelmap_), h_off, w_off, do_mirror);
     
     trans_time += timer.MicroSeconds();
 

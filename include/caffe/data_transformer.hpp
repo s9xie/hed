@@ -89,11 +89,11 @@ class DataTransformer {
   void Transform(Blob<Dtype>* input_blob, Blob<Dtype>* transformed_blob);
  
   //#ifndef OSX
-  void LabelmapTransform(const cv::Mat& cv_img, Blob<Dtype>* transformed_blob, std::pair<int,int> hw_off);
+  void LabelmapTransform(const cv::Mat& cv_img, Blob<Dtype>* transformed_blob, const int h_off, const int w_off, const bool do_mirror);
   //#endif
 
   //#ifndef OSX
-  std::pair<int,int> LocTransform(const cv::Mat& cv_img, Blob<Dtype>* transformed_blob);
+  void LocTransform(const cv::Mat& cv_img, Blob<Dtype>* transformed_blob, int &h_off, int &w_off, bool &do_mirror);
   //#endif
 
   /**
