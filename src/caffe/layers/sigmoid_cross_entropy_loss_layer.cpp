@@ -51,6 +51,8 @@ void SigmoidCrossEntropyLossLayer<Dtype>::Forward_cpu(
   for (int i = 0; i < num; ++i) {
       temp_loss_pos = 0;
       temp_loss_neg = 0;
+      count_pos = 0;
+      count_neg = 0;
       for (int j = 0; j < dim; j ++) {
          if (target[i*dim+j] == 1) {
         	count_pos ++;
