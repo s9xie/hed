@@ -18,8 +18,7 @@ If you are using the code/model/data provided here in a publication, please cite
       Booktitle = "Proceedings of IEEE International Conference on Computer Vision",
       Year  = {2015},
     }
-    
-  
+
 ### Changelog
 
 If you have downloaded the previous version (testing code) of HED, please note that we updated the code base to the new version of Caffe. We uploaded a new pretrained model with better performance. We adopted the python interface written for the FCN paper instead of our own implementation for training and testing. The evaluation protocol doesn't change.
@@ -43,6 +42,10 @@ To reproduce our results on BSDS500 dataset:
 Please refer to the IPython Notebook in examples/hed/ to test a trained model. The fusion-output, and individual side-output from 5 scales will be produced after one forward pass.
  
 Note that if you want to evaluate the results on BSDS benchmarking dataset, you should do the standard non-maximum suppression (NMS) and edge thinning. We used Piotr's Structured Forest matlab toolbox available here **https://github.com/pdollar/edges**. Some helper functions are also provided in the eval/ folder. 
+
+### Batch Processing
+
+[Jun-Yan Zhu](https://people.eecs.berkeley.edu/~junyanz/) from UC Berkeley recently applied HED for their [Image-to-Image Translation](https://phillipi.github.io/pix2pix/) work. A nice script for batch-processing HED edge detection can be found [here](https://github.com/phillipi/pix2pix/tree/master/scripts/edges). Thanks Jun-Yan!
 
 ### Precomputed Results
 If you want to compare your method with HED and need the precomputed results, you can download them from (http://vcl.ucsd.edu/hed/eval_results.tar).
