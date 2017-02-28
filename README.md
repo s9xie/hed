@@ -41,7 +41,7 @@ To reproduce our results on BSDS500 dataset:
 ### Testing HED
 Please refer to the IPython Notebook in examples/hed/ to test a trained model. The fusion-output, and individual side-output from 5 scales will be produced after one forward pass.
  
-Note that if you want to evaluate the results on BSDS benchmarking dataset, you should do the standard non-maximum suppression (NMS) and edge thinning. We used Piotr's Structured Forest matlab toolbox available here **https://github.com/pdollar/edges**. Some helper functions are also provided in the eval/ folder. 
+Note that if you want to evaluate the results on BSDS benchmarking dataset, you should do the standard non-maximum suppression (NMS) and edge thinning. We used Piotr's Structured Forest matlab toolbox available here **https://github.com/pdollar/edges**. Some helper functions are also provided in the [eval/ folder](https://github.com/s9xie/hed_release-deprecated/tree/master/examples/eval). 
 
 ### Batch Processing
 
