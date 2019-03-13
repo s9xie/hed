@@ -29,16 +29,19 @@ We provide the pretrained model and training/testing code for the edge detection
   0. Download the pretrained model (56MB) from (http://vcl.ucsd.edu/hed/hed_pretrained_bsds.caffemodel) and place it in examples/hed/ folder.
 
 ### Installing 
+
  0. Install prerequisites for Caffe(http://caffe.berkeleyvision.org/installation.html#prequequisites)
  0. Modified-caffe for HED: https://github.com/s9xie/hed.git
 
 ### Training HED
 To reproduce our results on BSDS500 dataset:
+
  0. data: Download the augmented BSDS data (1.2GB) from (http://vcl.ucsd.edu/hed/HED-BSDS.tar) and extract it in data/ folder
  0. initial model: Download fully convolutional VGG model (248MB) from (http://vcl.ucsd.edu/hed/5stage-vgg.caffemodel) and put it in examples/hed folder
  0. run the python script **python solve.py** in examples/hed
 
 ### Testing HED
+
 Please refer to the IPython Notebook in examples/hed/ to test a trained model. The fusion-output, and individual side-output from 5 scales will be produced after one forward pass.
  
 Note that if you want to evaluate the results on BSDS benchmarking dataset, you should do the standard non-maximum suppression (NMS) and edge thinning. We used Piotr's Structured Forest matlab toolbox available here **https://github.com/pdollar/edges**. Some helper functions are also provided in the [eval/ folder](https://github.com/s9xie/hed_release-deprecated/tree/master/examples/eval). 
@@ -49,7 +52,6 @@ Note that if you want to evaluate the results on BSDS benchmarking dataset, you 
 
 ### Precomputed Results
 If you want to compare your method with HED and need the precomputed results, you can download them from (http://vcl.ucsd.edu/hed/eval_results.tar).
-
 
 ### Acknowledgment: 
 This code is based on Caffe. Thanks to the contributors of Caffe. Thanks @shelhamer and @longjon for providing fundamental implementations that enable fully convolutional training/testing in Caffe.
