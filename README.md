@@ -26,7 +26,7 @@ If you have downloaded the previous version (testing code) of HED, please note t
 ### Pretrained model
 
 We provide the pretrained model and training/testing code for the edge detection framework Holistically-Nested Edge Detection (HED). Please see the Arxiv or ICCV paper for technical details. The pretrained model (fusion-output) gives ODS=.790 and OIS=.808 result on BSDS benchmark dataset.
-  0. Download the pretrained model (56MB) from (http://vcl.ucsd.edu/hed/hed_pretrained_bsds.caffemodel) and place it in examples/hed/ folder.
+  0. Download the pretrained model (56MB) from (http://vcl.ucsd.edu/hed/hed_pretrained_bsds.caffemodel) and place it in `examples/hed/` folder.
 
 ### Installing 
  0. Install prerequisites for Caffe(http://caffe.berkeleyvision.org/installation.html#prequequisites)
@@ -35,11 +35,11 @@ We provide the pretrained model and training/testing code for the edge detection
 ### Training HED
 To reproduce our results on BSDS500 dataset:
  0. data: Download the augmented BSDS data (1.2GB) from (http://vcl.ucsd.edu/hed/HED-BSDS.tar) and extract it in data/ folder
- 0. initial model: Download fully convolutional VGG model (248MB) from (http://vcl.ucsd.edu/hed/5stage-vgg.caffemodel) and put it in examples/hed folder
- 0. run the python script **python solve.py** in examples/hed
+ 0. initial model: Download fully convolutional VGG model (248MB) from (http://vcl.ucsd.edu/hed/5stage-vgg.caffemodel) and put it in `examples/hed` folder
+ 0. run the python script **python solve.py** in `examples/hed`
 
 ### Testing HED
-Please refer to the IPython Notebook in examples/hed/ to test a trained model. The fusion-output, and individual side-output from 5 scales will be produced after one forward pass.
+Please refer to the IPython Notebook in `examples/hed/` to test a trained model. The fusion-output, and individual side-output from 5 scales will be produced after one forward pass.
  
 Note that if you want to evaluate the results on BSDS benchmarking dataset, you should do the standard non-maximum suppression (NMS) and edge thinning. We used Piotr's Structured Forest matlab toolbox available here **https://github.com/pdollar/edges**. Some helper functions are also provided in the [eval/ folder](https://github.com/s9xie/hed_release-deprecated/tree/master/examples/eval). 
 
