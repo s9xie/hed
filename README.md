@@ -26,7 +26,7 @@ If you have downloaded the previous version (testing code) of HED, please note t
 ### Pretrained model
 
 We provide the pretrained model and training/testing code for the edge detection framework Holistically-Nested Edge Detection (HED). Please see the Arxiv or ICCV paper for technical details. The pretrained model (fusion-output) gives ODS=.790 and OIS=.808 result on BSDS benchmark dataset.
-  0. Download the pretrained model (56MB) from (http://vcl.ucsd.edu/hed/hed_pretrained_bsds.caffemodel) and place it in examples/hed/ folder.
+  0. Download the pretrained model (56MB) from (https://vcl.ucsd.edu/hed/hed_pretrained_bsds.caffemodel) and place it in examples/hed/ folder.
 
 ### Installing 
  0. Install prerequisites for Caffe(http://caffe.berkeleyvision.org/installation.html#prequequisites)
@@ -34,8 +34,8 @@ We provide the pretrained model and training/testing code for the edge detection
 
 ### Training HED
 To reproduce our results on BSDS500 dataset:
- 0. data: Download the augmented BSDS data (1.2GB) from (http://vcl.ucsd.edu/hed/HED-BSDS.tar) and extract it in data/ folder
- 0. initial model: Download fully convolutional VGG model (248MB) from (http://vcl.ucsd.edu/hed/5stage-vgg.caffemodel) and put it in examples/hed folder
+ 0. data: Download the augmented BSDS data (1.2GB) from (https://vcl.ucsd.edu/hed/HED-BSDS.tar) and extract it in data/ folder
+ 0. initial model: Download fully convolutional VGG model (248MB) from (https://vcl.ucsd.edu/hed/5stage-vgg.caffemodel) and put it in examples/hed folder
  0. run the python script **python solve.py** in examples/hed
 
 ### Testing HED
@@ -48,7 +48,7 @@ Note that if you want to evaluate the results on BSDS benchmarking dataset, you 
 [Jun-Yan Zhu](https://people.eecs.berkeley.edu/~junyanz/) from UC Berkeley recently applied HED for their [Image-to-Image Translation](https://phillipi.github.io/pix2pix/) work. A nice script for batch-processing HED edge detection can be found [here](https://github.com/phillipi/pix2pix/tree/master/scripts/edges). Thanks Jun-Yan!
 
 ### Precomputed Results
-If you want to compare your method with HED and need the precomputed results, you can download them from (http://vcl.ucsd.edu/hed/eval_results.tar).
+If you want to compare your method with HED and need the precomputed results, you can download them from (https://vcl.ucsd.edu/hed/eval_results.tar).
 
 
 ### Acknowledgment: 
